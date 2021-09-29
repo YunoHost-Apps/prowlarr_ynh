@@ -3,8 +3,8 @@
     "id": "prowlarr",
     "packaging_format": 1,
     "description": {
-        "en": "Integrates seamlessly with Lidarr, Mylar3, Radarr, Readarr, and Sonarr offering complete management of your indexers with no per app Indexer setup required.",
-        "fr": "S'intègre directement avec Lidarr, Mylar3, Radarr, Readarr, et Sonarr pour offrir une gestion complète de vos indexeurs sans aucune manipulation nécessaire dans chaque app."
+        "en": "Complete management of your indexers for Radarr, Sonarr, Lidarr, ...",
+        "fr": "Gestion complète de vos indexeurs pour Radarr, Sonarr, Lidarr, ..."
     },
     "version": "0.1.1.875~ynh1",
     "url": "https://prowlarr.com",
