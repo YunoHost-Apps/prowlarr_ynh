@@ -1,0 +1,17 @@
+[Unit]
+Description=Prowlarr Daemon
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=__APP__
+Group=__APP__
+WorkingDirectory=__FINALPATH__/
+ExecStart=__FINALPATH__/Prowlarr -nobrowser -data=__FINALPATH__/.data
+
+TimeoutStopSec=20
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

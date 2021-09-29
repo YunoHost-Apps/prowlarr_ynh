@@ -1,0 +1,12 @@
+<Config>
+  <LogLevel>info</LogLevel>
+  <EnableSsl>False</EnableSsl>
+  <Port>__PORT__</Port>
+  <SslPort>__PORT__</SslPort>
+  <UrlBase>__PATH__</UrlBase>
+  <BindAddress>127.0.0.1</BindAddress>
+  <ApiKey>__API_KEY__</ApiKey>
+  <AuthenticationMethod>None</AuthenticationMethod>
+  <UpdateMechanism>BuiltIn</UpdateMechanism>
+  <Branch>main</Branch>
+</Config>

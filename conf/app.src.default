@@ -1,0 +1,7 @@
+SOURCE_URL=https://github.com/Prowlarr/Prowlarr/releases/download/v__VERSION__/Prowlarr.develop.__VERSION__.linux-core-__ARCHITECTURE__.tar.gz
+SOURCE_SUM=__CHECKSUM__
+SOURCE_SUM_PRG=sha256sum
+SOURCE_FORMAT=tar.gz
+SOURCE_IN_SUBDIR=true
+SOURCE_EXTRACT=true
+SOURCE_FILENAME=prowlarr.tar.gz
