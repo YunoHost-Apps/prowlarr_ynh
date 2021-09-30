@@ -88,8 +88,12 @@ then
 	# Set global variables for NGINX helper
 	domain="$old_domain"
 	path_url="$new_path"
+	path="$new_path"
 	# Create a dedicated NGINX config
 	ynh_add_nginx_config
+else
+	path_url="$old_path"
+	path="$old_path"
 fi
 
 # Change the domain for NGINX
@@ -121,7 +125,7 @@ chown $app "$final_path/.data/config.xml"
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --time --weight=1
 
-ynh_systemd_action --service_name=$app --action="start" --log_path="systemd" --line_match="Starting Web Server"
+ynh_systemd_action --service_name=$app --action="start" --log_path="systemd" --line_match="Application started"
 
 #=================================================
 # RELOAD NGINX

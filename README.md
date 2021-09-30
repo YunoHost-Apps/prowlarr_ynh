@@ -15,7 +15,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 ## Overview
 
-Integrates seamlessly with Lidarr, Mylar3, Radarr, Readarr, and Sonarr offering complete management of your indexers with no per app Indexer setup required.
+Complete management of your indexers for Radarr, Sonarr, Lidarr, ...
 
 **Shipped version:** 0.1.1.875~ynh1
 
