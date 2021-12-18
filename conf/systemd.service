@@ -7,7 +7,7 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__FINALPATH__/
-ExecStart=__FINALPATH__/Prowlarr -nobrowser -data=__FINALPATH__/.data
+ExecStart=__FINALPATH__/Prowlarr -nobrowser -data=__DATA_PATH__
 
 TimeoutStopSec=20
 KillMode=process
