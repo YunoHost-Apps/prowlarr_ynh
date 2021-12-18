@@ -83,6 +83,9 @@ chmod 750 "$data_path"
 chmod -R o-rwx "$data_path"
 chown -R $app: "$data_path"
 
+chmod 400 "$data_path/config.xml"
+chown $app:$app "$data_path/config.xml"
+
 #=================================================
 # YUNOHOST MULTIMEDIA INTEGRATION
 #=================================================
