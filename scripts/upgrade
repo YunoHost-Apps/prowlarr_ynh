@@ -71,7 +71,7 @@ fi
 # Move data directory if needed
 if [ -z "$data_path" ]; then
         data_path=/home/yunohost.app/$app
-        ynh_app_setting_set --app=$app --key=data_path --value=$daya_path
+        ynh_app_setting_set --app=$app --key=data_path --value=$data_path
         mv "$final_path/.data" "/home/yunohost.app/$app"
 fi
 
