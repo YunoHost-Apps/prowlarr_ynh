@@ -21,6 +21,7 @@ path_url=$(ynh_app_setting_get --app=$app --key=path)
 admin=$(ynh_app_setting_get --app=$app --key=admin)
 port=$(ynh_app_setting_get --app=$app --key=port)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
+data_path=$(ynh_app_setting_get --app=$app --key=data_path)
 
 #=================================================
 # CHECK VERSION
@@ -67,6 +68,13 @@ if ! ynh_permission_exists --permission="api"; then
 	ynh_permission_create --permission="api" --url="/api" --allowed="visitors" --show_tile="false" --protected="true"
 fi
 
+# Move data directory if needed
+if [ -z "$data_path" ]; then
+        data_path=/home/yunohost.app/$app
+        ynh_app_setting_set --app=$app --key=data_path --value=$data_path
+        mv "$final_path/.data" "/home/yunohost.app/$app"
+fi
+
 #=================================================
 # CREATE DEDICATED USER
 #=================================================
@@ -89,10 +97,14 @@ then
 	ynh_setup_source --dest_dir="$final_path" --source_id="app.$architecture"
 fi
 
-mkdir -p "$final_path/.data/logs"
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app: "$final_path"
+
+mkdir -p "$data_path/logs"
+chmod 750 "$data_path"
+chmod -R o-rwx "$data_path"
+chown -R $app: "$data_path"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -128,14 +140,14 @@ ynh_script_progression --message="Upgrading logrotate configuration..." --weight
 
 # Use logrotate to manage app-specific logfile(s)
 ynh_use_logrotate --non-append
-ynh_use_logrotate --non-append --logfile="$final_path/.data/logs"
+ynh_use_logrotate --non-append --logfile="$data_path/logs"
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
-yunohost service add $app --description="Prowlarr daemon" --log="$final_path/.data/logs/prowlarr.txt"
+yunohost service add $app --description="Prowlarr daemon" --log="$data_path/logs/prowlarr.txt"
 
 #=================================================
 # START SYSTEMD SERVICE
