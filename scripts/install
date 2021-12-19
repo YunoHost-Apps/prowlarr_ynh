@@ -36,7 +36,10 @@ app=$YNH_APP_INSTANCE_NAME
 ynh_script_progression --message="Validating installation parameters..." --weight=1
 
 final_path=/opt/yunohost/$app
-test ! -e "$final_path" || ynh_die --message="This path already contains a folder"
+test ! -e "$final_path" || ynh_die --message="Installation path ($final_path) already exists"
+
+data_path=/home/yunohost.app/$app
+test ! -e "$data_path" || ynh_die --message="Data directory ($data_path) already exists"
 
 # Register (book) web path
 ynh_webpath_register --app=$app --domain=$domain --path_url=$path_url
@@ -87,7 +90,8 @@ ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$final_path" --source_id="app.$architecture"
 
-mkdir -p "$final_path/.data/logs"
+ynh_app_setting_set --app=$app --key=data_path --value=$data_path
+mkdir -p "$data_path/logs"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -115,7 +119,7 @@ ynh_script_progression --message="Configuring Prowlarr..." --weight=2
 api_key=$(ynh_string_random --length=32)
 ynh_app_setting_set --app=$app --key=api_key --value=$api_key
 
-ynh_add_config --template="../conf/config.xml" --destination="$final_path/.data/config.xml"
+ynh_add_config --template="../conf/config.xml" --destination="$data_path/config.xml"
 
 #=================================================
 # SETUP FILE PERMISSIONS
@@ -125,6 +129,13 @@ ynh_script_progression --message="Setting files permissions and ownership..." --
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app: "$final_path"
+
+chmod 750 "$data_path"
+chmod -R o-rwx "$data_path"
+chown -R $app: "$data_path"
+
+chmod 400 "$data_path/config.xml"
+chown $app:$app "$data_path/config.xml"
 
 #=================================================
 # YUNOHOST MULTIMEDIA INTEGRATION
@@ -145,14 +156,14 @@ ynh_script_progression --message="Configuring log rotation..." --weight=1
 
 # Use logrotate to manage application logfile(s)
 ynh_use_logrotate
-ynh_use_logrotate --logfile="$final_path/.data/logs"
+ynh_use_logrotate --logfile="$data_path/logs"
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
-yunohost service add $app --description="Prowlarr daemon" --log="$final_path/.data/logs/prowlarr.txt"
+yunohost service add $app --description="Prowlarr daemon" --log="$data_path/logs/prowlarr.txt"
 
 #=================================================
 # START SYSTEMD SERVICE

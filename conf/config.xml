@@ -7,6 +7,6 @@
   <BindAddress>127.0.0.1</BindAddress>
   <ApiKey>__API_KEY__</ApiKey>
   <AuthenticationMethod>None</AuthenticationMethod>
-  <UpdateMechanism>BuiltIn</UpdateMechanism>
-  <Branch>main</Branch>
+  <UpdateMechanism>External</UpdateMechanism>
+  <Branch>develop</Branch>
 </Config>

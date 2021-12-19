@@ -28,6 +28,7 @@ ynh_script_progression --message="Loading installation settings..." --time --wei
 
 # Needed for helper "ynh_add_nginx_config"
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
+data_path=$(ynh_app_setting_get --app=$app --key=data_path)
 port=$(ynh_app_setting_get --app=$app --key=port)
 api_key=$(ynh_app_setting_get --app=$app --key=api_key)
 
@@ -112,11 +113,11 @@ fi
 # UPDATE CONFIGURATION FILE
 #=================================================
 
-ynh_exec_warn_less 'ynh_add_config --template="../conf/config.xml" --destination="$final_path/.data/config.xml"'
+ynh_exec_warn_less 'ynh_add_config --template="../conf/config.xml" --destination="$data_path/config.xml"'
 
-chmod 750 "$final_path/.data/config.xml"
-chmod o-rwx "$final_path/.data/config.xml"
-chown $app "$final_path/.data/config.xml"
+chmod 750 "$data_path/config.xml"
+chmod o-rwx "$data_path/config.xml"
+chown $app "$data_path/config.xml"
 
 #=================================================
 # GENERIC FINALISATION
