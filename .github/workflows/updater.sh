@@ -64,13 +64,13 @@ echo "Handling asset at $asset_url"
 # Here we base the source file name upon a unique keyword in the assets url (admin vs. update)
 # Leave $src empty to ignore the asset
 case $asset_url in
-  *"linux-core-arm"*)
+  *"linux-core-arm.tar.gz")
     src="app.arm"
     ;;
-  *"linux-core-arm64"*)
+  *"linux-core-arm64.tar.gz")
     src="app.arm64"
     ;;
-  *"linux-core-x64"*)
+  *"linux-core-x64.tar.gz")
     src="app.x64"
     ;;
   *)
