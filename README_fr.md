@@ -17,7 +17,7 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 Gestion complète de vos indexeurs pour Radarr, Sonarr, Lidarr, ...
 
-**Version incluse :** 0.4.11.2143~ynh1
+**Version incluse :** 1.0.0.2171~ynh1
 
 ## Captures d'écran
 
