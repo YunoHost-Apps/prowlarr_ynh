@@ -15,7 +15,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 ## Overview
 
-Complete management of your indexers for Radarr, Sonarr, Lidarr, ...
+Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
 **Shipped version:** 1.0.1.2220~ynh1
 
