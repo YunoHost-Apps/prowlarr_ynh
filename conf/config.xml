@@ -9,4 +9,9 @@
   <AuthenticationMethod>None</AuthenticationMethod>
   <UpdateMechanism>BuiltIn</UpdateMechanism>
   <Branch>develop</Branch>
+  <AuthenticationRequired></AuthenticationRequired>
+  <InstanceName>Prowlarr</InstanceName>
+  <LaunchBrowser>False</LaunchBrowser>
+  <SslCertPath></SslCertPath>
+  <SslCertPassword></SslCertPassword>
 </Config>
