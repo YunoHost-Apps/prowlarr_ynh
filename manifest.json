@@ -3,10 +3,10 @@
     "id": "prowlarr",
     "packaging_format": 1,
     "description": {
-        "en": "Complete management of your indexers for Radarr, Sonarr, Lidarr, ...",
-        "fr": "Gestion complète de vos indexeurs pour Radarr, Sonarr, Lidarr, ..."
+        "en": "Complete management of your indexers for Radarr, Sonarr, Lidarr...",
+        "fr": "Gestion complète de vos indexeurs pour Radarr, Sonarr, Lidarr..."
     },
-    "version": "1.0.0.2171~ynh1",
+    "version": "1.3.2.2984~ynh1",
     "url": "https://prowlarr.com",
     "upstream": {
         "license": "GPL-3.0-only",
@@ -20,7 +20,7 @@
         "email": "tituspijean@outlook.com"
     },
     "requirements": {
-        "yunohost": ">= 4.3"
+        "yunohost": ">= 11.0.9"
     },
     "multi_instance": true,
     "services": [
