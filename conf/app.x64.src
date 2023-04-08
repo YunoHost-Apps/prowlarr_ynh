@@ -1,5 +1,5 @@
-SOURCE_URL=https://github.com/Prowlarr/Prowlarr/releases/download/v1.3.2.2984/Prowlarr.develop.1.3.2.2984.linux-core-x64.tar.gz
-SOURCE_SUM=710218900c63a9399a481d6d66be6661f7f0b8ceae6f583663dcd2ca7b32b7f1
+SOURCE_URL=https://github.com/Prowlarr/Prowlarr/releases/download/v1.3.2.3006/Prowlarr.master.1.3.2.3006.linux-core-x64.tar.gz
+SOURCE_SUM=4fb59098abaf281f41eb52aeeef67f7d5f8397303929594e38f999cd1a54be06
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=tar.gz
 SOURCE_IN_SUBDIR=true
