@@ -6,7 +6,7 @@
         "en": "Complete management of your indexers for Radarr, Sonarr, Lidarr...",
         "fr": "Gestion complète de vos indexeurs pour Radarr, Sonarr, Lidarr..."
     },
-    "version": "1.5.1.3422~ynh1",
+    "version": "1.6.0.3527~ynh1",
     "url": "https://prowlarr.com",
     "upstream": {
         "license": "GPL-3.0-only",
