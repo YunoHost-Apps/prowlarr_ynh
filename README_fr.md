@@ -18,7 +18,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 Gestion complète de vos indexeurs pour Radarr, Sonarr, Lidarr...
 
-**Version incluse :** 1.9.0.3966~ynh1
+**Version incluse :** 1.9.1.3981~ynh1
 
 ## Captures d’écran
 
@@ -35,7 +35,6 @@ Gestion complète de vos indexeurs pour Radarr, Sonarr, Lidarr...
 * Site officiel de l’app : <https://prowlarr.com>
 * Documentation officielle de l’admin : <https://wiki.servarr.com/prowlarr>
 * Dépôt de code officiel de l’app : <https://github.com/Prowlarr/Prowlarr>
-* Documentation YunoHost pour cette app : <https://yunohost.org/app_prowlarr>
 * Signaler un bug : <https://github.com/YunoHost-Apps/prowlarr_ynh/issues>
 
 ## Informations pour les développeurs
