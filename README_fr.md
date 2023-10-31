@@ -35,6 +35,7 @@ Gestion complète de vos indexeurs pour Radarr, Sonarr, Lidarr...
 * Site officiel de l’app : <https://prowlarr.com>
 * Documentation officielle de l’admin : <https://wiki.servarr.com/prowlarr>
 * Dépôt de code officiel de l’app : <https://github.com/Prowlarr/Prowlarr>
+* YunoHost Store: <https://apps.yunohost.org/app/prowlarr>
 * Signaler un bug : <https://github.com/YunoHost-Apps/prowlarr_ynh/issues>
 
 ## Informations pour les développeurs
