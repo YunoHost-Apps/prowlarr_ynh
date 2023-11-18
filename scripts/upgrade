@@ -10,45 +10,10 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# LOAD SETTINGS
-#=================================================
-#REMOVEME? ynh_script_progression --message="Loading installation settings..." --weight=1
-
-#REMOVEME? app=$YNH_APP_INSTANCE_NAME
-
-#REMOVEME? domain=$(ynh_app_setting_get --app=$app --key=domain)
-#REMOVEME? path=$(ynh_app_setting_get --app=$app --key=path)
-#REMOVEME? admin=$(ynh_app_setting_get --app=$app --key=admin)
-#REMOVEME? port=$(ynh_app_setting_get --app=$app --key=port)
-#REMOVEME? #REMOVEME? install_dir=$(ynh_app_setting_get --app=$app --key=install_dir)
-#REMOVEME? data_path=$(ynh_app_setting_get --app=$app --key=data_path)
-#REMOVEME? api_key=$(ynh_app_setting_get --app=$app --key=api_key)
-
-#=================================================
 # CHECK VERSION
 #=================================================
 
-### This helper will compare the version of the currently installed app and the version of the upstream package.
-### $upgrade_type can have 2 different values
-### - UPGRADE_APP if the upstream app version has changed
-### - UPGRADE_PACKAGE if only the YunoHost package has changed
-### ynh_check_app_version_changed will stop the upgrade if the app is up to date.
-### UPGRADE_APP should be used to upgrade the core app only if there's an upgrade to do.
 upgrade_type=$(ynh_check_app_version_changed)
-
-#=================================================
-# BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
-#=================================================
-#REMOVEME? ynh_script_progression --message="Backing up the app before upgrading (may take a while)..." --weight=4
-
-# Backup the current version of the app
-#REMOVEME? ynh_backup_before_upgrade
-#REMOVEME? ynh_clean_setup () {
-	# Restore it if the upgrade fails
-#REMOVEME? 	ynh_restore_upgradebackup
-}
-# Exit if an error occurs during the execution of the script
-#REMOVEME? ynh_abort_if_errors
 
 #=================================================
 # STANDARD UPGRADE STEPS
@@ -60,39 +25,12 @@ ynh_script_progression --message="Stopping a systemd service..." --weight=1
 ynh_systemd_action --service_name=$app --action="stop" --log_path="systemd"
 
 #=================================================
-# ENSURE DOWNWARD COMPATIBILITY
-#=================================================
-ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
-
-# Create a permission if needed
-#REMOVEME? if ! ynh_permission_exists --permission="api"; then
-#REMOVEME? 	ynh_permission_create --permission="api" --url="/api" --allowed="visitors" --show_tile="false" --protected="true"
-fi
-
-# Move data directory if needed
-if [ -z "$data_path" ]; then
-        data_path=/home/yunohost.app/$app
-#REMOVEME?         ynh_app_setting_set --app=$app --key=data_path --value=$data_path
-        mv "$install_dir/.data" "/home/yunohost.app/$app"
-fi
-
-#=================================================
-# CREATE DEDICATED USER
-#=================================================
-#REMOVEME? ynh_script_progression --message="Making sure dedicated system user exists..." --weight=1
-
-# Create a dedicated user (if not existing)
-#REMOVEME? ynh_system_user_create --username=$app --home_dir="$install_dir"
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 
 if [ "$upgrade_type" == "UPGRADE_APP" ]
 then
 	ynh_script_progression --message="Upgrading source files..." --weight=3
-
-	get_architecture
 
 	# Download, check integrity, uncompress and patch the source from app.src
 	ynh_setup_source --dest_dir="$install_dir" 
@@ -102,11 +40,6 @@ chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"
 chown -R $app: "$install_dir"
 
-mkdir -p "$data_path/logs"
-chmod 750 "$data_path"
-chmod -R o-rwx "$data_path"
-chown -R $app: "$data_path"
-
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
@@ -115,32 +48,20 @@ ynh_script_progression --message="Upgrading NGINX web server configuration..." -
 # Create a dedicated NGINX config
 ynh_add_nginx_config
 
-#=================================================
-# UPGRADE DEPENDENCIES
-#=================================================
-#REMOVEME? ynh_script_progression --message="Upgrading dependencies..." --weight=4
-
-#REMOVEME? ynh_install_app_dependencies $pkg_dependencies
-
-#=================================================
-# SPECIFIC UPGRADE
-#=================================================
-# SETUP SYSTEMD
-#=================================================
-ynh_script_progression --message="Upgrading systemd configuration..." --weight=1
-
 # Create a dedicated systemd config
 ynh_add_systemd_config
+
+yunohost service add $app --description="Prowlarr daemon" --log="$data_dir/logs/prowlarr.txt"
 
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
 ynh_script_progression --message="Updating the configuration file.." --weight=1
 
-ynh_add_config --template="../conf/config.xml" --destination="$data_path/config.xml"
+ynh_add_config --template="config.xml" --destination="$data_dir/config.xml"
 
-chmod 400 "$data_path/config.xml"
-chown $app:$app "$data_path/config.xml"
+chmod 400 "$data_dir/config.xml"
+chown $app:$app "$data_dir/config.xml"
 
 #=================================================
 # GENERIC FINALIZATION
@@ -151,14 +72,7 @@ ynh_script_progression --message="Upgrading logrotate configuration..." --weight
 
 # Use logrotate to manage app-specific logfile(s)
 ynh_use_logrotate --non-append
-ynh_use_logrotate --non-append --logfile="$data_path/logs"
-
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
-
-yunohost service add $app --description="Prowlarr daemon" --log="$data_path/logs/prowlarr.txt"
+ynh_use_logrotate --non-append --logfile="$data_dir/logs"
 
 #=================================================
 # START SYSTEMD SERVICE
@@ -168,14 +82,7 @@ ynh_script_progression --message="Starting a systemd service..." --weight=2
 ynh_systemd_action --service_name=$app --action="start" --log_path="systemd" --line_match="CommandExecutor: Starting"
 
 # FIXME Update config.xml checksum, for a mere file ending with or without a new line...
-ynh_store_file_checksum --file="$data_path/config.xml"
-
-#=================================================
-# RELOAD NGINX
-#=================================================
-#REMOVEME? ynh_script_progression --message="Reloading NGINX web server..." --weight=1
-
-#REMOVEME? ynh_systemd_action --service_name=nginx --action=reload
+ynh_store_file_checksum --file="$data_dir/config.xml"
 
 #=================================================
 # END OF SCRIPT

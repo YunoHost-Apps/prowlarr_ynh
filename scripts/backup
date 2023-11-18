@@ -11,36 +11,9 @@ source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# MANAGE SCRIPT FAILURE
-#=================================================
-
-#REMOVEME? ynh_clean_setup () {
-	### Remove this function if there's nothing to clean before calling the remove script.
-	true
-}
-# Exit if an error occurs during the execution of the script
-#REMOVEME? ynh_abort_if_errors
-
-#=================================================
-# LOAD SETTINGS
-#=================================================
-#REMOVEME? ynh_print_info --message="Loading installation settings..."
-
-#REMOVEME? app=$YNH_APP_INSTANCE_NAME
-
-#REMOVEME? #REMOVEME? install_dir=$(ynh_app_setting_get --app=$app --key=install_dir)
-#REMOVEME? data_path=$(ynh_app_setting_get --app=$app --key=data_path)
-#REMOVEME? domain=$(ynh_app_setting_get --app=$app --key=domain)
-
-#=================================================
 # DECLARE DATA AND CONF FILES TO BACKUP
 #=================================================
 ynh_print_info --message="Declaring files to be backed up..."
-
-### N.B. : the following 'ynh_backup' calls are only a *declaration* of what needs
-### to be backuped and not an actual copy of any file. The actual backup that
-### creates and fill the archive with the files happens in the core after this
-### script is called. Hence ynh_backups calls takes basically 0 seconds to run.
 
 #=================================================
 # BACKUP THE APP MAIN DIR
@@ -52,7 +25,8 @@ ynh_backup --src_path="$install_dir"
 # BACKUP THE APP DATA DIR
 #=================================================
 
-ynh_backup --src_path="$data_path"
+# Only relevant if there is a "data_dir" resource for this app
+ynh_backup --src_path="$data_dir" --is_big
 
 #=================================================
 # BACKUP THE NGINX CONFIGURATION
