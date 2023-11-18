@@ -10,7 +10,7 @@ version="0.8.1.2135"
 supported_architectures=("arm" "arm64" "x64")
 
 # dependencies used by the app
-pkg_dependencies="curl mediainfo sqlite3"
+#REMOVEME? pkg_dependencies="curl mediainfo sqlite3"
 
 #=================================================
 # PERSONAL HELPERS
