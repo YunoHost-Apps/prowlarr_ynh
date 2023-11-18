@@ -31,7 +31,15 @@ ynh_change_url_nginx_config
 # UPDATE CONFIGURATION FILE
 #=================================================
 
+<<<<<<< HEAD
 ynh_replace_string --match_string="<UrlBase>$old_path</UrlBase>" --replace_string="<UrlBase>$new_path</UrlBase>" --target_file="$data_dir/config.xml"
+=======
+ynh_exec_warn_less 'ynh_add_config --template="config.xml" --destination="$data_dir/config.xml"'
+
+chmod 750 "$data_dir/config.xml"
+chmod o-rwx "$data_dir/config.xml"
+chown $app "$data_dir/config.xml"
+>>>>>>> 64e384b (v2)
 
 #=================================================
 # GENERIC FINALISATION

@@ -10,9 +10,15 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+<<<<<<< HEAD
 # REMOVE SYSTEM CONFIGURATIONS
 #=================================================
 # REMOVE SYSTEMD SERVICE 
+=======
+# STANDARD REMOVE
+#=================================================
+# REMOVE SERVICE INTEGRATION IN YUNOHOST
+>>>>>>> 64e384b (v2)
 #=================================================
 ynh_script_progression --message="Removing system configurations related to $app..." --weight=1
 
@@ -32,9 +38,12 @@ ynh_remove_nginx_config
 # Remove the app-specific logrotate config
 ynh_remove_logrotate
 
+<<<<<<< HEAD
 # Remove the log files
 ynh_secure_remove --file="/var/log/$app"
 
+=======
+>>>>>>> 64e384b (v2)
 #=================================================
 # END OF SCRIPT
 #=================================================
