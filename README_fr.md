@@ -16,18 +16,13 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 ## Vue d’ensemble
 
-Gestion complète de vos indexeurs pour Radarr, Sonarr, Lidarr...
+Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
 **Version incluse :** 1.13.1.4243~ynh1
 
 ## Captures d’écran
 
 ![Capture d’écran de Prowlarr](./doc/screenshots/screenshot.jpg)
-
-## Avertissements / informations importantes
-
-* Le contrôle de l'accès se fait avec le système de permissions de YunoHost.
-  * L'API (`__DOMAIN____PATH__/api`) est accessible aux visiteurs pour permettre le contrôle via des clients externes.
 
 ## Documentations et ressources
 

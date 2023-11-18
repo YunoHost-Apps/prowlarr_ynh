@@ -24,11 +24,6 @@ Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
 ![Screenshot of Prowlarr](./doc/screenshots/screenshot.jpg)
 
-## Disclaimers / important information
-
-* Access control is done with YunoHost's permissions system.
-  * API (`__DOMAIN____PATH__/api`) can be accessed by visitors to allow control by remote clients.
-
 ## Documentation and resources
 
 * Official app website: <https://prowlarr.com>
