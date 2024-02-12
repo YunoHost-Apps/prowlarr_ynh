@@ -61,3 +61,7 @@ ynh_store_file_checksum --file="$data_dir/config.xml"
 #=================================================
 
 ynh_script_progression --message="Restoration completed for $app" --last
+
+if [ ${PACKAGE_CHECK_EXEC:-0} -eq 1 ]; then
+    sleep 5
+fi
