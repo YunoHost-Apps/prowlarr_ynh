@@ -1,16 +1,18 @@
 #!/bin/bash
 
 #=================================================
-# GENERIC START
-#=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
 
 source _common.sh
 source /usr/share/yunohost/helpers
 
+#=================================================
+# INITIALIZE AND STORE SETTINGS
+#=================================================
+
 api_key=$(ynh_string_random --length=32)
-ynh_app_setting_set --app=$app --key=api_key --value=$api_key
+ynh_app_setting_set --app="$app" --key=api_key --value="$api_key"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -18,31 +20,19 @@ ynh_app_setting_set --app=$app --key=api_key --value=$api_key
 ynh_script_progression --message="Setting up source files..." --weight=3
 
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$install_dir" 
-mkdir -p "$data_dir/logs"
+ynh_setup_source --dest_dir="$install_dir"
 
 chmod -R o-rwx "$install_dir"
-chown -R $app: "$install_dir"
+chown -R "$app:" "$install_dir"
 
 #=================================================
-# NGINX CONFIGURATION
+# APP INITIAL CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring NGINX web server..." --weight=1
-
-# Create a dedicated NGINX config
-ynh_add_nginx_config
-
-# Create a dedicated systemd config
-ynh_add_systemd_config
-
-#=================================================
-# ADD A CONFIGURATION
-#=================================================
-ynh_script_progression --message="Configuring Prowlarr..." --weight=2
+ynh_script_progression --message="Adding $app's configuration files..." --weight=1
 
 ynh_add_config --template="config.xml" --destination="$data_dir/config.xml"
 chmod 400 "$data_dir/config.xml"
-chown $app:$app "$data_dir/config.xml"
+chown "$app:$app" "$data_dir/config.xml"
 
 #=================================================
 # YUNOHOST MULTIMEDIA INTEGRATION
@@ -52,33 +42,31 @@ ynh_script_progression --message="Adding multimedia directories..." --weight=2
 # Build YunoHost multimedia directories
 ynh_multimedia_build_main_dir
 # Enable writing into these directories
-ynh_multimedia_addaccess $app
+ynh_multimedia_addaccess "$app"
 
 #=================================================
-# GENERIC FINALIZATION
+# SYSTEM CONFIGURATION
 #=================================================
-# SETUP LOGROTATE
-#=================================================
-ynh_script_progression --message="Configuring log rotation..." --weight=1
+ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
+
+# Create a dedicated NGINX config
+ynh_add_nginx_config
+
+# Create a dedicated systemd config
+ynh_add_systemd_config
+yunohost service add "$app" --description="Prowlarr daemon" --log="$data_dir/logs/prowlarr.txt"
 
 # Use logrotate to manage application logfile(s)
 ynh_use_logrotate
 ynh_use_logrotate --logfile="$data_dir/logs"
 
 #=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
-
-yunohost service add $app --description="Prowlarr daemon" --log="$data_dir/logs/prowlarr.txt"
-
-#=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --weight=2
+ynh_script_progression --message="Starting $app's systemd service..." --weight=2
 
 # Start a systemd service
-ynh_systemd_action --service_name=$app --action="start" --log_path="systemd" --line_match="CommandExecutor: Starting"
+ynh_systemd_action --service_name="$app" --action="start" --log_path="systemd" --line_match="CommandExecutor: Starting"
 
 # FIXME Update config.xml checksum, for a mere file ending with or without a new line...
 ynh_store_file_checksum --file="$data_dir/config.xml"

@@ -1,8 +1,6 @@
 #!/bin/bash
 
 #=================================================
-# GENERIC START
-#=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
 
@@ -10,34 +8,32 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# CHECK VERSION
-#=================================================
-
-upgrade_type=$(ynh_check_app_version_changed)
-
-#=================================================
-# STANDARD UPGRADE STEPS
-#=================================================
 # STOP SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Stopping a systemd service..." --weight=1
+ynh_script_progression --message="Stopping $app's systemd service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action="stop" --log_path="systemd"
+ynh_systemd_action --service_name="$app" --action="stop" --log_path="systemd"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
+ynh_script_progression --message="Upgrading source files..." --weight=3
 
-if [ "$upgrade_type" == "UPGRADE_APP" ]
-then
-	ynh_script_progression --message="Upgrading source files..." --weight=3
-
-	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$install_dir" 
-fi
+# Download, check integrity, uncompress and patch the source from app.src
+ynh_setup_source --dest_dir="$install_dir" --full_replace=1
 
 chmod -R o-rwx "$install_dir"
-chown -R $app: "$install_dir"
+chown -R "$app:" "$install_dir"
+
+#=================================================
+# UPDATE A CONFIG FILE
+#=================================================
+ynh_script_progression --message="Updating the configuration file..." --weight=1
+
+ynh_add_config --template="config.xml" --destination="$data_dir/config.xml"
+
+chmod 400 "$data_dir/config.xml"
+chown "$app:$app" "$data_dir/config.xml"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
@@ -49,25 +45,7 @@ ynh_add_nginx_config
 
 # Create a dedicated systemd config
 ynh_add_systemd_config
-
-yunohost service add $app --description="Prowlarr daemon" --log="$data_dir/logs/prowlarr.txt"
-
-#=================================================
-# UPDATE A CONFIG FILE
-#=================================================
-ynh_script_progression --message="Updating the configuration file..." --weight=1
-
-ynh_add_config --template="config.xml" --destination="$data_dir/config.xml"
-
-chmod 400 "$data_dir/config.xml"
-chown $app:$app "$data_dir/config.xml"
-
-#=================================================
-# GENERIC FINALIZATION
-#=================================================
-# SETUP LOGROTATE
-#=================================================
-ynh_script_progression --message="Upgrading logrotate configuration..." --weight=1
+yunohost service add "$app" --description="Prowlarr daemon" --log="$data_dir/logs/prowlarr.txt"
 
 # Use logrotate to manage app-specific logfile(s)
 ynh_use_logrotate --non-append
@@ -76,9 +54,9 @@ ynh_use_logrotate --non-append --logfile="$data_dir/logs"
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --weight=2
+ynh_script_progression --message="Starting $app's systemd service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action="start" --log_path="systemd" --line_match="CommandExecutor: Starting"
+ynh_systemd_action --service_name="$app" --action="start" --log_path="systemd" --line_match="CommandExecutor: Starting"
 
 # FIXME Update config.xml checksum, for a mere file ending with or without a new line...
 ynh_store_file_checksum --file="$data_dir/config.xml"
