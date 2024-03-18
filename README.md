@@ -17,8 +17,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 ## Overview
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
-
-**Shipped version:** 1.14.1.4316~ynh1
+**Shipped version:** 1.14.2.4318~ynh1
 
 ## Screenshots
 
@@ -26,11 +25,11 @@ Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
 ## Documentation and resources
 
-* Official app website: <https://prowlarr.com>
-* Official admin documentation: <https://wiki.servarr.com/prowlarr>
-* Upstream app code repository: <https://github.com/Prowlarr/Prowlarr>
-* YunoHost Store: <https://apps.yunohost.org/app/prowlarr>
-* Report a bug: <https://github.com/YunoHost-Apps/prowlarr_ynh/issues>
+- Official app website: <https://prowlarr.com>
+- Official admin documentation: <https://wiki.servarr.com/prowlarr>
+- Upstream app code repository: <https://github.com/Prowlarr/Prowlarr>
+- YunoHost Store: <https://apps.yunohost.org/app/prowlarr>
+- Report a bug: <https://github.com/YunoHost-Apps/prowlarr_ynh/issues>
 
 ## Developer info
 
@@ -38,7 +37,7 @@ Please send your pull request to the [testing branch](https://github.com/YunoHos
 
 To try the testing branch, please proceed like that.
 
-``` bash
+```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/prowlarr_ynh/tree/testing --debug
 or
 sudo yunohost app upgrade prowlarr -u https://github.com/YunoHost-Apps/prowlarr_ynh/tree/testing --debug
