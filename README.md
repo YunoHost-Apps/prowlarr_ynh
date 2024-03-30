@@ -18,7 +18,7 @@ It shall NOT be edited by hand.
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**Shipped version:** 1.14.3.4333~ynh1
+**Shipped version:** 1.15.0.4361~ynh1
 
 ## Screenshots
 
