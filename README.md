@@ -9,7 +9,7 @@ It shall NOT be edited by hand.
 
 [![Install Prowlarr with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=prowlarr)
 
-*[Read this README is other languages.](./ALL_README.md)*
+*[Read this README in other languages.](./ALL_README.md)*
 
 > *This package allows you to install Prowlarr quickly and simply on a YunoHost server.*  
 > *If you don't have YunoHost, please consult [the guide](https://yunohost.org/install) to learn how to install it.*
@@ -18,7 +18,7 @@ It shall NOT be edited by hand.
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**Shipped version:** 1.15.0.4361~ynh1
+**Shipped version:** 1.16.2.4435~ynh1
 
 ## Screenshots
 
