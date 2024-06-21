@@ -18,7 +18,7 @@ Il NE doit PAS être modifié à la main.
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**Version incluse :** 1.18.0.4543~ynh1
+**Version incluse :** 1.19.0.4568~ynh1
 
 ## Captures d’écran
 
