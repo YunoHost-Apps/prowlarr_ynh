@@ -5,7 +5,7 @@ NON debe editarse manualmente.
 
 # Prowlarr para YunoHost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/prowlarr.svg)](https://dash.yunohost.org/appci/app/prowlarr) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/prowlarr.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/prowlarr.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/prowlarr.svg)](https://ci-apps.yunohost.org/ci/apps/prowlarr/) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/prowlarr.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/prowlarr.maintain.svg)
 
 [![Instalar Prowlarr con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=prowlarr)
 
@@ -18,7 +18,7 @@ NON debe editarse manualmente.
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**Versión proporcionada:** 1.19.0.4568~ynh1
+**Versión proporcionada:** 1.20.1.4603~ynh1
 
 ## Capturas de pantalla
 
