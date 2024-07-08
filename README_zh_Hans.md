@@ -5,7 +5,7 @@
 
 # YunoHost 上的 Prowlarr
 
-[![集成程度](https://dash.yunohost.org/integration/prowlarr.svg)](https://dash.yunohost.org/appci/app/prowlarr) ![工作状态](https://ci-apps.yunohost.org/ci/badges/prowlarr.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/prowlarr.maintain.svg)
+[![集成程度](https://dash.yunohost.org/integration/prowlarr.svg)](https://ci-apps.yunohost.org/ci/apps/prowlarr/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/prowlarr.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/prowlarr.maintain.svg)
 
 [![使用 YunoHost 安装 Prowlarr](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=prowlarr)
 
@@ -18,7 +18,7 @@
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**分发版本：** 1.19.0.4568~ynh1
+**分发版本：** 1.20.1.4603~ynh1
 
 ## 截图
 
