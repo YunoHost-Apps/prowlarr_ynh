@@ -26,8 +26,6 @@ ynh_remove_nginx_config
 # Remove the app-specific logrotate config
 ynh_remove_logrotate
 
-# Remove the log files
-
 #=================================================
 # END OF SCRIPT
 #=================================================
