@@ -28,7 +28,7 @@ Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
 - Website aplikasi resmi: <https://prowlarr.com>
 - Dokumentasi admin resmi: <https://wiki.servarr.com/prowlarr>
-- Repositori kode aplikasi hulu: <https://github.com/Prowlarr/Prowlarr>
+- Depot kode aplikasi hulu: <https://github.com/Prowlarr/Prowlarr>
 - Gudang YunoHost: <https://apps.yunohost.org/app/prowlarr>
 - Laporkan bug: <https://github.com/YunoHost-Apps/prowlarr_ynh/issues>
 
