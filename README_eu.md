@@ -18,7 +18,7 @@ EZ editatu eskuz.
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**Paketatutako bertsioa:** 1.21.2.4649~ynh1
+**Paketatutako bertsioa:** 1.22.0.4670~ynh1
 
 ## Pantaila-argazkiak
 
