@@ -18,7 +18,7 @@ No se debe editar a mano.
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**Versión actual:** 1.22.0.4670~ynh1
+**Versión actual:** 1.23.1.4708~ynh1
 
 ## Capturas
 
