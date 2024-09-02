@@ -15,8 +15,6 @@ ynh_script_progression "Restoring the app main directory..."
 
 ynh_restore "$install_dir"
 
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:" "$install_dir"
 #=================================================
 # RESTORE THE DATA DIRECTORY
 #=================================================
@@ -28,8 +26,6 @@ chown -R "$app:www-data" "$data_dir"
 
 if [ ! -f "$data_dir/config.xml" ]; then
     ynh_config_add --template="config.xml" --destination="$data_dir/config.xml"
-    #REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 400 "$data_dir/config.xml"
-    #REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown "$app:$app" "$data_dir/config.xml"
 fi
 
 #=================================================

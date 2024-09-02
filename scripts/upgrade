@@ -22,8 +22,6 @@ ynh_script_progression "Upgrading source files..."
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$install_dir" --full_replace
 
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:" "$install_dir"
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
@@ -33,9 +31,6 @@ ynh_script_progression "Updating the configuration file..."
 sed -i -e '$a\' "$data_dir/config.xml"
 
 ynh_config_add --template="config.xml" --destination="$data_dir/config.xml"
-
-#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 400 "$data_dir/config.xml"
-#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown "$app:$app" "$data_dir/config.xml"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
