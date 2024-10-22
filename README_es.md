@@ -18,7 +18,7 @@ No se debe editar a mano.
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**Versión actual:** 1.23.1.4708~ynh1
+**Versión actual:** 1.25.4.4818~ynh1
 
 ## Capturas
 
@@ -34,7 +34,7 @@ Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/prowlarr_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/prowlarr_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 

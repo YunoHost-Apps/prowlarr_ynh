@@ -18,7 +18,7 @@
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**分发版本：** 1.23.1.4708~ynh1
+**分发版本：** 1.25.4.4818~ynh1
 
 ## 截图
 
