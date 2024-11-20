@@ -18,7 +18,7 @@ Hij mag NIET handmatig aangepast worden.
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**Geleverde versie:** 1.25.4.4818~ynh1
+**Geleverde versie:** 1.26.1.4844~ynh1
 
 ## Schermafdrukken
 
