@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # Prowlarr untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/prowlarr.svg)](https://ci-apps.yunohost.org/ci/apps/prowlarr/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/prowlarr.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/prowlarr.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/prowlarr)](https://ci-apps.yunohost.org/ci/apps/prowlarr/)
+![Status kerja](https://apps.yunohost.org/badge/state/prowlarr)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/prowlarr)
 
 [![Pasang Prowlarr dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=prowlarr)
 
@@ -18,7 +20,7 @@ Ini TIDAK boleh diedit dengan tangan.
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**Versi terkirim:** 1.26.1.4844~ynh1
+**Versi terkirim:** 1.27.0.4852~ynh1
 
 ## Tangkapan Layar
 
