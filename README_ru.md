@@ -5,7 +5,9 @@
 
 # Prowlarr для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/prowlarr.svg)](https://ci-apps.yunohost.org/ci/apps/prowlarr/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/prowlarr.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/prowlarr.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/prowlarr)](https://ci-apps.yunohost.org/ci/apps/prowlarr/)
+![Состояние работы](https://apps.yunohost.org/badge/state/prowlarr)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/prowlarr)
 
 [![Установите Prowlarr с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=prowlarr)
 
@@ -18,7 +20,7 @@
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**Поставляемая версия:** 1.26.1.4844~ynh1
+**Поставляемая версия:** 1.27.0.4852~ynh1
 
 ## Снимки экрана
 
