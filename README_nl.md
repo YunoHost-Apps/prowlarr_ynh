@@ -5,7 +5,9 @@ Hij mag NIET handmatig aangepast worden.
 
 # Prowlarr voor Yunohost
 
-[![Integratieniveau](https://dash.yunohost.org/integration/prowlarr.svg)](https://ci-apps.yunohost.org/ci/apps/prowlarr/) ![Mate van functioneren](https://ci-apps.yunohost.org/ci/badges/prowlarr.status.svg) ![Onderhoudsstatus](https://ci-apps.yunohost.org/ci/badges/prowlarr.maintain.svg)
+[![Integratieniveau](https://apps.yunohost.org/badge/integration/prowlarr)](https://ci-apps.yunohost.org/ci/apps/prowlarr/)
+![Mate van functioneren](https://apps.yunohost.org/badge/state/prowlarr)
+![Onderhoudsstatus](https://apps.yunohost.org/badge/maintained/prowlarr)
 
 [![Prowlarr met Yunohost installeren](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=prowlarr)
 
@@ -18,7 +20,7 @@ Hij mag NIET handmatig aangepast worden.
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**Geleverde versie:** 1.26.1.4844~ynh1
+**Geleverde versie:** 1.27.0.4852~ynh1
 
 ## Schermafdrukken
 
