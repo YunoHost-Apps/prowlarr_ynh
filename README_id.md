@@ -20,7 +20,7 @@ Ini TIDAK boleh diedit dengan tangan.
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**Versi terkirim:** 1.28.2.4885~ynh1
+**Versi terkirim:** 1.29.2.4915~ynh1
 
 ## Tangkapan Layar
 
