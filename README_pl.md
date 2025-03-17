@@ -20,7 +20,7 @@ Nie powinno być ono edytowane ręcznie.
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**Dostarczona wersja:** 1.31.2.4975~ynh1
+**Dostarczona wersja:** 1.32.2.4987~ynh1
 
 ## Zrzuty ekranu
 

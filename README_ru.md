@@ -20,7 +20,7 @@
 
 Complete management of your indexers for Radarr, Sonarr, Lidarr...
 
-**Поставляемая версия:** 1.31.2.4975~ynh1
+**Поставляемая версия:** 1.32.2.4987~ynh1
 
 ## Снимки экрана
 
