@@ -28,8 +28,6 @@ ynh_backup "$data_dir"
 ynh_backup "/etc/nginx/conf.d/$domain.d/$app.conf"
 
 #=================================================
-# SPECIFIC BACKUP
-#=================================================
 # BACKUP LOGROTATE
 #=================================================
 
