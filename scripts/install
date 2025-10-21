@@ -4,7 +4,6 @@
 # IMPORT GENERIC HELPERS
 #=================================================
 
-source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
@@ -12,32 +11,27 @@ source /usr/share/yunohost/helpers
 #=================================================
 
 api_key=$(ynh_string_random --length=32)
-ynh_app_setting_set --app="$app" --key=api_key --value="$api_key"
+ynh_app_setting_set --key=api_key --value="$api_key"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..." --weight=3
+ynh_script_progression "Setting up source files..."
 
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$install_dir"
 
-chmod -R o-rwx "$install_dir"
-chown -R "$app:" "$install_dir"
-
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding $app's configuration files..." --weight=1
+ynh_script_progression "Adding $app's configuration files..."
 
-ynh_add_config --template="config.xml" --destination="$data_dir/config.xml"
-chmod 400 "$data_dir/config.xml"
-chown "$app:$app" "$data_dir/config.xml"
+ynh_config_add --template="config.xml" --destination="$data_dir/config.xml"
 
 #=================================================
 # YUNOHOST MULTIMEDIA INTEGRATION
 #=================================================
-ynh_script_progression --message="Adding multimedia directories..." --weight=2
+ynh_script_progression "Adding multimedia directories..."
 
 # Build YunoHost multimedia directories
 ynh_multimedia_build_main_dir
@@ -47,29 +41,29 @@ ynh_multimedia_addaccess "$app"
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
+ynh_script_progression "Adding system configurations related to $app..."
 
 # Create a dedicated NGINX config
-ynh_add_nginx_config
+ynh_config_add_nginx
 
 # Create a dedicated systemd config
-ynh_add_systemd_config
+ynh_config_add_systemd
 yunohost service add "$app" --description="Prowlarr daemon" --log="$data_dir/logs/prowlarr.txt"
 
 # Use logrotate to manage application logfile(s)
-ynh_use_logrotate
-ynh_use_logrotate --logfile="$data_dir/logs"
+ynh_config_add_logrotate
+ynh_config_add_logrotate "$data_dir/logs"
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting $app's systemd service..." --weight=2
+ynh_script_progression "Starting $app's systemd service..."
 
 # Start a systemd service
-ynh_systemd_action --service_name="$app" --action="start" --log_path="systemd" --line_match="CommandExecutor: Starting"
+ynh_systemctl --service="$app" --action="start" --log_path="systemd" --wait_until="CommandExecutor: Starting"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Installation of $app completed" --last
+ynh_script_progression "Installation of $app completed"
