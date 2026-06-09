@@ -7,7 +7,7 @@ name = "Prowlarr"
 description.en = "Complete management of your indexers for Radarr, Sonarr, Lidarr..."
 description.fr = "Gestion complète de vos indexeurs pour Radarr, Sonarr, Lidarr..."
 
-version = "2.3.5.5327~ynh1"
+version = "2.4.0.5397~ynh1"
 
 maintainers = ["tituspijean"]
 
@@ -43,13 +43,13 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    amd64.url = "https://github.com/Prowlarr/Prowlarr/releases/download/v2.3.5.5327/Prowlarr.master.2.3.5.5327.linux-core-x64.tar.gz"
-    amd64.sha256 = "70c2a200f90b5e60239b0ca0cba2ed879ce31f3be68cf1bfe676e6b30292a9d0"
+    amd64.url = "https://github.com/Prowlarr/Prowlarr/releases/download/v2.4.0.5397/Prowlarr.master.2.4.0.5397.linux-core-x64.tar.gz"
+    amd64.sha256 = "95c1285d286513fe9565767291bde93940fdb432dbad3fdd41faa60f73eabcca"
 
-    arm64.url = "https://github.com/Prowlarr/Prowlarr/releases/download/v2.3.5.5327/Prowlarr.master.2.3.5.5327.linux-core-arm64.tar.gz"
-    arm64.sha256 = "f6979b8cf172d2c918dc2a520b82e0eed09dabcde02e8a4f961c23da26181443"
-    armhf.url = "https://github.com/Prowlarr/Prowlarr/releases/download/v2.3.5.5327/Prowlarr.master.2.3.5.5327.linux-core-arm.tar.gz"
-    armhf.sha256 = "671044fbf7db22d23d48b6bc61c1ec8aab16994ab4a2cba7805a4248a6601eaf"
+    arm64.url = "https://github.com/Prowlarr/Prowlarr/releases/download/v2.4.0.5397/Prowlarr.master.2.4.0.5397.linux-core-arm64.tar.gz"
+    arm64.sha256 = "3e54bec60bef729a50a92d5dbee3c7dfa0b067074de4f145d25cfdc6a102314f"
+    armhf.url = "https://github.com/Prowlarr/Prowlarr/releases/download/v2.4.0.5397/Prowlarr.master.2.4.0.5397.linux-core-arm.tar.gz"
+    armhf.sha256 = "a91062e806fe0aa3f25f52a3277a527a145abb402b9a6640b2fc613232f39857"
 
     autoupdate.strategy = "latest_github_release"
     autoupdate.asset.amd64 = "^Prowlarr\\.master\\..*\\.linux-core-x64\\.tar\\.gz$"
