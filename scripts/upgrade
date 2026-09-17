@@ -29,7 +29,7 @@ ynh_script_progression "Updating the configuration file..."
 # Add newline at end of file if required
 sed -i -e '$a\' "$data_dir/config.xml"
 
-ynh_config_add --template="config.xml" --destination="$data_dir/config.xml"
+# ynh_config_add --template="config.xml" --destination="$data_dir/config.xml"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
